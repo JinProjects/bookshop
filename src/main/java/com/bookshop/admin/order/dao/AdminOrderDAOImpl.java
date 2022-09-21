@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
+import com.bookshop.member.vo.MemberVO;
 import com.bookshop.order.vo.OrderVO;
 
 @Repository("adminOrderDAO")
@@ -29,5 +30,10 @@ public class AdminOrderDAOImpl implements AdminOrderDAO{
 	public ArrayList<OrderVO> selectOrderDetail(int order_id) throws DataAccessException {
 		ArrayList<OrderVO> orderList = (ArrayList)sqlSession.selectList("mapper.admin.order.selectOrderDetail",order_id);
 		return orderList;
+	}
+	@Override
+	public MemberVO selectOrderer(String member_id) throws DataAccessException {
+		MemberVO memberVO = sqlSession.selectOne("mapper.admin.order.selectOrderer",member_id);
+		return memberVO;
 	}
 }

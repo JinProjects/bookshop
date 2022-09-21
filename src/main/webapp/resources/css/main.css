@@ -2,6 +2,7 @@
 	font-family: NanumGothic;
 	src: local("?"), url(../imgs/nanum.woff) format("woff"), url(../imgs/nanum.ttf) format("truetype");
 }
+/* 페이지의 여백을 없앤다  */
 * {
 	margin: 0px; padding: 0px; vertical-align: middle;
 }

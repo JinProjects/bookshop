@@ -187,6 +187,7 @@ function fn_enable_detail_search(r_search){
 		btn_search.disabled=true;
 	}
 }
+/* 주문관리페이지의 주문번호 상세페이지 */
 function fn_detail_order(order_id){
 	var frm_delivery_list=document.frm_delivery_list;
 	var formObj=document.createElement("form");
@@ -442,8 +443,8 @@ function fn_detail_search(){
 				</tr>
 			</tbody>
 		</table>
-		<div class="clear"></div>
-		<div class="clear"></div>
+		<!-- <div class="clear"></div>
+		<div class="clear"></div> -->
 		<table class="list_view">
 			<tbody align="center">
 				<tr style="background:#33ff00">
