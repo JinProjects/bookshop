@@ -19,8 +19,12 @@ public class ViewNameInterceptor extends HandlerInterceptorAdapter{
 	}
 
 	private String getViewName(HttpServletRequest request) {
+		//uri에서 contextPath 부분을 삭제하기 위해 불러옴
 		String contextPath = request.getContextPath();
+		//이 코드가 왜 있는지 알아보기
+		//include로 페이지를 불러올 때 값이 담김 아니면 null
 		String uri = (String) request.getAttribute("javax.servlet.include.request_uri");
+		//null이면 getRequestURI()로 uri 가져옴
 		if(uri == null || uri.trim().equals("")) {
 			uri = request.getRequestURI();
 		}

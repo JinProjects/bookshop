@@ -8,6 +8,7 @@
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+	<!-- aop 애너테이션을 자동 인식 -->
 	<aop:aspectj-autoproxy />
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	<bean id="propertyPlaceholderConfigurer"

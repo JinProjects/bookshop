@@ -62,6 +62,7 @@ function search_order_history(search_period){
 function calcPeriod(search_period){
 	var dt = new Date();
 	var beginYear,endYear;
+	var beginMonth,endMonth;
 	var beginDay,endDay;
 	var beginDate,endDate;
 	
@@ -79,7 +80,7 @@ function calcPeriod(search_period){
 		beginDay=dt.getDate();
 	}else if(search_period=='two_week'){
 		beginYear=dt.getFullYear();
-		beginMonth=dt.getMonth+1;
+		beginMonth=dt.getMonth()+1;
 		dt.setDate(endDay-14);
 		beginDay=dt.getDate();
 	}else if(search_period=='one_month'){

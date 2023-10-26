@@ -31,12 +31,12 @@ isELIgnored="false" %>
 				<td>${item.order_id }</td>
 				<td class="goods_image">
 					<a href="${contextPath }/goods/goodsDetail.do?goods_id=${item.goods_id}">
-						<img width="75" src="${contextPath }/goods/goodsDetail.do?goods_id=${item.goods_id}&fileName=${item.goods_fileName}">
+						<img width="75" src="${contextPath }/thumbnails.do?goods_id=${item.goods_id}&fileName=${item.goods_fileName}">
 					</a>
 				</td>
 				<td>
 					<h2>
-						<a href="${contextPath }/goods/goodsDetail.do?goods_id=${item.goods_id}">${item.goods_id}</a>
+						<a href="${contextPath }/goods/goodsDetail.do?goods_id=${item.goods_id}">${item.goods_title}</a>
 					</h2>
 				</td>
 				<td>
@@ -55,7 +55,7 @@ isELIgnored="false" %>
 	<br>
 	<br>
 	<h1>2.배송지 정보</h1>
-	<div class="detail1_table">
+	<div class="detail_table">
 		<table>
 			<tbody>
 				<tr class="dot_line">
@@ -64,7 +64,7 @@ isELIgnored="false" %>
 				</tr>
 				<tr class="dot_line">
 					<td class="fixed_join">받으실 분</td>
-					<td>${myOrderInfo.receiver>name}</td>
+					<td>${myOrderInfo.receiver_name}</td>
 				</tr>
 				<tr class="dot_line">
 					<td class="fixed_join">휴대폰번호</td>
@@ -102,20 +102,61 @@ isELIgnored="false" %>
 					</td>
 				</tr>
 				<tr class="dot_line">
-					<td>핸드폰</td>
+					<td><h2>핸드폰</h2></td>
 					<td>
 						<input type="text" value="${orderer.hp1 }-${orderer.hp2}-${orderer.hp3}" size=15 disabled>
 					</td>
 				</tr>
-				<tr>
-					<td class="dot_line">이메일</td>
+				<tr class="dot_line">
+					<td><h2>이메일</h2></td>
 					<td>
-						<input type="text" value="${orderer.email}@${orderer.email2}" size=15 disabled>
+						<input type="text" value="${orderer.email1}@${orderer.email2}" size=15 disabled>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="clear"></div>
+	<br>
+	<br>
+	<br>
+	<h1>3.결제정보</h1>
+	<div class="detail_table">
+		<table>
+			<tbody>
+				<tr class="dot_line">
+					<td class="fixed_join">결제방법</td>
+					<td>
+						${myOrderInfo.pay_method }
+					</td>
+				</tr>
+				<tr class="dot_line">
+					<td class="fixed_join">결제카드</td>
+					<td>
+						${myOrderInfo.card_com_name}
+					</td>
+				</tr>
+				<tr class="dot_line">
+					<td class="fixed_join">할부기간</td>
+					<td>
+						${myOrderInfo.card_pay_month }
 					</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
 </form>
+	<div class="clear"></div>
+	<br>
+	<br>
+	<br>
+	
+	<center>
+		<br>
+		<br>
+		<a href="${contextPath }/main/main.do">
+			<img width="75" src="${contextPath }/resources/image/btn_shoping_continue.jpg">
+		</a>
+	</center>
 </body>
 </html>

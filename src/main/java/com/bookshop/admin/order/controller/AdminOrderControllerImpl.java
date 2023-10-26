@@ -88,7 +88,7 @@ public class AdminOrderControllerImpl extends BaseController implements AdminOrd
 	}
 
 	@Override
-	@RequestMapping(value = "/orderDetail.do",method = {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value = "/detailOrder.do",method = {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView orderDetail(@RequestParam("order_id") int order_id, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		String viewName = (String)request.getAttribute("viewName");

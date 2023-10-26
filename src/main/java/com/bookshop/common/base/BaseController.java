@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.bookshop.goods.vo.ImageFileVO;
 
 public abstract class BaseController {
+	//파일업로드 저장소
 	private static final String CURR_IMAGE_REPO_PATH = "C:\\shopping\\file_repo";
 	
 	protected List<ImageFileVO> upload(MultipartRequest multipartRequest) throws Exception{
@@ -48,7 +49,8 @@ public abstract class BaseController {
 		
 		return fileList;
 	}
-	
+	//저자가 사용자가 직접 url을 치고 들어올거란 생각을 안해서 이렇게 작성함
+	//없는 url을 치고 올 경우 예외처리를 해주어야 함
 	@RequestMapping(value="/*.do", method = {RequestMethod.POST,RequestMethod.GET})
 	protected ModelAndView viewForm(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		String viewName = (String)request.getAttribute("viewName");
@@ -65,6 +67,7 @@ public abstract class BaseController {
 		String beginYear = null;
 		String beginMonth = null;
 		String beginDay = null;
+		//빈 자리수는 0으로 채워줌
 		DecimalFormat df = new DecimalFormat("00");
 		Calendar cal = Calendar.getInstance();
 		//현재 날짜까지
@@ -97,6 +100,34 @@ public abstract class BaseController {
 		beginDate = beginYear + "-" + beginMonth + "-" + beginDay;
 		
 			
+		return beginDate+","+endDate;
+	}
+	
+	protected String calcInitPeriod() {
+		String date = null;
+		String beginYear = null;
+		String beginMonth = null;
+		String beginDay = null;
+		String beginDate = null;
+		
+		String endYear = null;
+		String endMonth = null;
+		String endDay = null;
+		String endDate = null;
+		
+		DecimalFormat df = new DecimalFormat("00");
+		Calendar cal = Calendar.getInstance();
+		
+		beginYear = Integer.toString(cal.get(Calendar.YEAR));
+		beginMonth = df.format(cal.get(Calendar.MONTH)-3);
+		beginDay = df.format(cal.get(Calendar.DATE));
+		beginDate = beginYear+"-"+beginMonth+"-"+beginDay;
+		
+		endYear = Integer.toString(cal.get(Calendar.YEAR));
+		endMonth = df.format(cal.get(Calendar.MONTH)+1);
+		endDay = df.format(cal.get(Calendar.DATE));
+		endDate = endYear+"-"+endMonth+"-"+endDay;
+		
 		return beginDate+","+endDate;
 	}
 }
